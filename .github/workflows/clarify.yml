@@ -15,7 +15,8 @@ jobs:
           fetch-depth: 0 # Required to get full history for detecting changes
 
       - name: Verify Clarity Contracts
-        uses: proj-clarity-esbmc/clara_github_action@v0.1.0-alpha
+        uses: proj-clarity-esbmc/clara_github_action@v0.1.1-alpha
+
         with:
           contracts_dir: "./contracts"
           fail_on_issue: "true"
