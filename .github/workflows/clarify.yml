@@ -16,7 +16,7 @@ jobs:
 
       - name: Verify Clarity Contracts
         id: verify
-        uses: proj-clarity-esbmc/clara_github_action@v0.1.3-alpha
+        uses: proj-clarity-esbmc/clara_github_action@v0.1.4-alpha
         with:
           contracts_dir: "./contracts"
           fail_on_issue: "true"
