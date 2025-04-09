@@ -12,17 +12,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Required to get full history for detecting changes
 
       - name: Verify Clarity Contracts
         id: verify
-        uses: proj-clarity-esbmc/clara_github_action@v0.1.1-alpha
+        uses: proj-clarity-esbmc/clara_github_action@v0.1.5-alpha
         with:
           contracts_dir: "./contracts"
           fail_on_issue: "true"
 
       - name: Upload SARIF to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
-        if: always() # Run even if verification fails
+        uses: github/codeql-action/upload-sarif@v3
+        if: always() && steps.verify.outputs.sarif_report != ''
         with:
           sarif_file: ${{ steps.verify.outputs.sarif_report }}
