@@ -16,7 +16,7 @@
 ;; Function to increment the count for the caller
 (define-public (count-down)
   (begin 
-    (asserts! (> (get-count tx-sender) u0) (err "already-zero"))
+    (asserts! (> (get-count tx-sender) u0) (err "already-zero-count"))
     (ok (map-set counters tx-sender (- (get-count tx-sender) u1)))
   )
 )

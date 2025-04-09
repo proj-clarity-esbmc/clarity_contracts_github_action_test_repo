@@ -7,16 +7,16 @@ on:
 
 jobs:
   verify:
-    runs-on: ubuntu-latest`
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Required to get full history for detecting changes
+          fetch-depth: 0
 
       - name: Verify Clarity Contracts
+        id: verify
         uses: proj-clarity-esbmc/clara_github_action@v0.1.1-alpha
-
         with:
           contracts_dir: "./contracts"
           fail_on_issue: "true"
